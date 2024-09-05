@@ -6,6 +6,7 @@ int lines = 0;
 
 %% 
 [a=zA-Z]+ { words++; chars += strlen(yytext); }
+[^ \t\n\r\f\v]+ {words++; chars += strlen(yytext); //wc program word definition: string of nonwhitespace characters}
 \n { chars++; lines++; }
 . { chars++; }
 %%
@@ -16,5 +17,4 @@ main(int argc, char **argv){
 //flex <filename>
 //cc lex.yy.c
 //./a.out
-
 }
